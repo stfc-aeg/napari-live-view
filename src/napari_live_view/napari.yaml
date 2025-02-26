@@ -1,0 +1,9 @@
+name: napari-live-view
+contributions:
+  commands:
+    - id: napari-live-view.viewer
+      title: Viewer
+      python_name: napari_live_view:Viewer
+  widgets:
+    - command: napari-live-view.viewer
+      display_name: Viewer

@@ -1,0 +1,29 @@
+[project]
+name = "napari-live-view"
+dynamic = ["version"]
+description = " "
+authors = [{name = "Evelyn Johns", email = "evelyn.johns@stfc.ac.uk"}]
+requires-python = ">=3.9"
+classifiers = [
+    "Framework :: napari"
+]
+dependencies = [
+    "numpy",
+    "qtpy"
+]
+
+[build-system]
+requires = ["setuptools>=42.0.0", "wheel", "setuptools_scm"]
+build-backend = "setuptools.build_meta"
+
+[project.entry-points."napari.manifest"]
+napari-live-view = "napari_live_view:napari.yaml"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"*" = ["*.yaml"]
