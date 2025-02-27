@@ -10,7 +10,8 @@ classifiers = [
 ]
 dependencies = [
     "numpy",
-    "qtpy"
+    "qtpy",
+    "napari"
 ]
 
 [build-system]
