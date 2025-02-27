@@ -3,6 +3,10 @@ import os
 from qtpy.QtWidgets import QPushButton, QWidget, QLabel, QLineEdit, QGridLayout, QSizePolicy, QVBoxLayout
 from .receiver import Receiver
 
+from typing import TYPE_CHECKING
+if TYPE_CHECKING:
+    import napari
+
 class Viewer(QWidget):
     """"Viewer class.
     
