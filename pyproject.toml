@@ -1,7 +1,8 @@
 [project]
 name = "napari-live-view"
 dynamic = ["version"]
-description = " "
+description = "Live view napari plugin"
+readme = "README.md"
 authors = [{name = "Evelyn Johns", email = "evelyn.johns@stfc.ac.uk"}]
 requires-python = ">=3.9"
 classifiers = [
