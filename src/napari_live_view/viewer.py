@@ -136,10 +136,14 @@ class Viewer(QWidget):
     def connect(self, endpoint_url):
         """Connects given endpoint URL to receiver, starts and connects worker."""
         self.receiver.connect(endpoint_url)
-        self.receiver.start_worker()
-        self.receiver.connect_worker(self.update_layer)
         if self.receiver.connected:
-            print("Connected") # move to receiver?
+            print("Connected") 
+            self.receiver.start_worker()
+            self.receiver.connect_worker(self.update_layer)
+        else:
+            self.connect_button.setText("CONNECT")
+            self.endpoint_input.setReadOnly(False)
+
 
     def disconnect(self):
         """Stops worker."""

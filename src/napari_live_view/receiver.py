@@ -25,15 +25,14 @@ class Receiver():
             self.socket.setsockopt_string(zmq.SUBSCRIBE, "")
             self.socket.connect(self.endpoint_url)
             self.connected = True
-        except:
-            print("Invalid url")
+        except Exception as e:
+            print(f"Connection error: {e}")
     
     def disconnect(self):
         """Disconnects from ZMQ socket and destroys context."""
         self.connected = False
         self.socket.disconnect(self.endpoint_url)
         self.context.destroy()
-        
 
     def start_worker(self):
         """Creates worker from @thread_worker decorated function, starts worker."""
