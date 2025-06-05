@@ -122,16 +122,11 @@ class Viewer(QWidget):
         Depending on buttons state, calls either connect or disconnect, and
         updates appearance.
         """
-        if self.connect_button.text() == "CONNECT":
-            self.connect_button.setText("DISCONNECT")
-            self.endpoint_input.setReadOnly(True) 
-            # could have the input detect if text is changed and automatically disconnect and reconnect?
+        if self.receiver.connected:
+            self.disconnect()
+        else:
             self.endpoint_url = self.endpoint_input.text()
             self.connect(self.endpoint_url)
-        else:
-            self.connect_button.setText("CONNECT")
-            self.endpoint_input.setReadOnly(False)
-            self.disconnect()
 
     def connect(self, endpoint_url):
         """Connects given endpoint URL to receiver, starts and connects worker."""
@@ -140,15 +135,15 @@ class Viewer(QWidget):
             print("Connected") 
             self.receiver.start_worker()
             self.receiver.connect_worker(self.update_layer)
-        else:
-            self.connect_button.setText("CONNECT")
-            self.endpoint_input.setReadOnly(False)
-
+            self.connect_button.setText("DISCONNECT")
+            self.endpoint_input.setReadOnly(True) 
 
     def disconnect(self):
         """Stops worker."""
         if self.receiver.connected:
             self.receiver.stop_worker()
+            self.connect_button.setText("CONNECT")
+            self.endpoint_input.setReadOnly(False)
 
 class GridWidget(QWidget):
     """GridWidget class.
